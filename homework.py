@@ -18,12 +18,6 @@ def is_two_object_has_same_value(first: Any, second: Any) -> bool:
     return first == second;
 
 
-print('for 1 and 1 values is_two_object_has_same_value function result is:')
-print(str(is_two_object_has_same_value(1,1)))
-print('for 1 and 2 values is_two_object_has_same_value function result is:')
-print(str(is_two_object_has_same_value(1,2)))
-
-
 def is_two_objects_has_same_type(first: Any, second: Any) -> bool:
     """
     If @first and @second has same type should return True
@@ -32,24 +26,12 @@ def is_two_objects_has_same_type(first: Any, second: Any) -> bool:
     return type(first) == type(second);
 
 
-print('for asd and dfsg the result of is_two_objects_has_same_type is:')
-print(str(is_two_objects_has_same_type('asd','dfsg')))
-print('for asd and 13 the result of is_two_objects_has_same_type is:')
-print(str(is_two_objects_has_same_type('asd',13)))
-
-
 def is_two_objects_is_the_same_objects(first: Any, second: Any) -> bool:
     """
     If @first and @second has same type should return True
     In another case should return False
     """
     return first is second;
-
-
-print('for asd and dfsg the result of is_two_objects_is_the_same_objects is:')
-print(str(is_two_objects_is_the_same_objects('asd','dfsg')))
-print('for 13 and 13 the result of is_two_objects_is_the_same_objects is:')
-print(str(is_two_objects_is_the_same_objects(13, 13)))
 
 
 def multiple_ints(first_value: int, second_value: int) -> int:
@@ -66,10 +48,13 @@ def multiple_ints(first_value: int, second_value: int) -> int:
     Returns:
         Product of elements
     """
-    if isinstance(first_value, int) and isinstance(second_value, int):
-        return first_value*second_value
-    else:
-        raise Exception('ValueError')
+    try:
+        if isinstance(first_value, int) and isinstance(second_value, int):
+            return first_value*second_value
+        else:
+            raise ValueError
+    except ValueError:
+        print('value is incorrect')
 
 
 def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
@@ -99,7 +84,6 @@ def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
             print("Not valid input data")
         >>> "Not valid input data"
     """
-
     try:
         int(first_value)
         int(second_value)
@@ -125,7 +109,10 @@ def is_word_in_text(word: str, text: str) -> bool:
         >>> False
 
     """
-    pass
+    if text.find(word) !=-1:
+        return True
+    else:
+        return False
 
 
 def some_loop_exercise() -> list:
@@ -141,9 +128,6 @@ def some_loop_exercise() -> list:
     return a
 
 
-print(some_loop_exercise())
-
-
 def remove_from_list_all_negative_numbers(data: List[int]) -> list:
     """
     Use loops to solve this task.
@@ -153,7 +137,10 @@ def remove_from_list_all_negative_numbers(data: List[int]) -> list:
         remove_from_list_all_negative_numbers([1, 5, -7, 8, -1])
         >>> [1, 5, 8]
     """
-    pass
+    for i in data:
+        if i < 0:
+            data.remove(i)
+    return data
 
 
 def alphabet() -> dict:
@@ -164,7 +151,13 @@ def alphabet() -> dict:
         alphabet()
         >>> {"a": 1, "b": 2 ...}
     """
-    pass
+    keys=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+          'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    values = range(1,27)
+    mydict = dict(zip(keys, values))
+    print('we are here')
+    return mydict
+
 
 def simple_sort(data: List[int]) -> List[list]:
     """
@@ -175,4 +168,12 @@ def simple_sort(data: List[int]) -> List[list]:
     Returns:
 
     """
-    pass
+    data2 = []
+    while data:
+        lowest = data[0]
+        for i in data:
+            if i < lowest:
+                lowest = i
+        data2.append(lowest)
+        data.remove(lowest)
+    return data2
