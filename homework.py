@@ -15,7 +15,7 @@ def is_two_object_has_same_value(first: Any, second: Any) -> bool:
     If @first and @second has same value should return True
     In another case should return False
     """
-    return first == second;
+    return first == second
 
 
 def is_two_objects_has_same_type(first: Any, second: Any) -> bool:
@@ -23,7 +23,7 @@ def is_two_objects_has_same_type(first: Any, second: Any) -> bool:
     If @first and @second has same type should return True
     In another case should return False
     """
-    return type(first) == type(second);
+    return type(first) == type(second)
 
 
 def is_two_objects_is_the_same_objects(first: Any, second: Any) -> bool:
@@ -31,7 +31,7 @@ def is_two_objects_is_the_same_objects(first: Any, second: Any) -> bool:
     If @first and @second has same type should return True
     In another case should return False
     """
-    return first is second;
+    return first is second
 
 
 def multiple_ints(first_value: int, second_value: int) -> int:
@@ -48,13 +48,12 @@ def multiple_ints(first_value: int, second_value: int) -> int:
     Returns:
         Product of elements
     """
-    try:
-        if isinstance(first_value, int) and isinstance(second_value, int):
-            return first_value*second_value
-        else:
-            raise ValueError
-    except ValueError:
-        print('value is incorrect')
+    if isinstance(first_value, int) and isinstance(second_value, int):
+        return first_value*second_value
+    else:
+        print('first_value ' + str(first_value))
+        print('second_value ' + str(second_value))
+        raise ValueError
 
 
 def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
@@ -85,11 +84,12 @@ def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
         >>> "Not valid input data"
     """
     try:
-        int(first_value)
-        int(second_value)
-        return first_value*second_value
-
-    except OurAwesomeException:
+        a = int(first_value)
+        b = int(second_value)
+        return a * b
+    except TypeError:
+        raise ValueError
+    except ValueError:
         print('not convertible input data')
 
 
@@ -137,10 +137,11 @@ def remove_from_list_all_negative_numbers(data: List[int]) -> list:
         remove_from_list_all_negative_numbers([1, 5, -7, 8, -1])
         >>> [1, 5, 8]
     """
+    my_list = []
     for i in data:
-        if i < 0:
-            data.remove(i)
-    return data
+        if i >= 0:
+            my_list.append(i)
+    return my_list
 
 
 def alphabet() -> dict:
@@ -151,12 +152,11 @@ def alphabet() -> dict:
         alphabet()
         >>> {"a": 1, "b": 2 ...}
     """
-    keys=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-          'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-    values = range(1,27)
-    mydict = dict(zip(keys, values))
-    print('we are here')
-    return mydict
+    values = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+              'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    keys = range(1, 27)
+    my_dict = dict(zip(keys, values))
+    return my_dict
 
 
 def simple_sort(data: List[int]) -> List[list]:
