@@ -123,8 +123,6 @@ def some_loop_exercise() -> list:
     for i in range(13):
         if i != 6 and i != 7:
             a.append(i)
-        else:
-            pass
     return a
 
 
@@ -152,8 +150,8 @@ def alphabet() -> dict:
         alphabet()
         >>> {"a": 1, "b": 2 ...}
     """
-    values = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-              'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    import string
+    values = list(string.ascii_lowercase)
     keys = range(1, 27)
     my_dict = dict(zip(keys, values))
     return my_dict
