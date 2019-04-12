@@ -4,7 +4,7 @@ This is a list of functions that should be completed.
 
 from typing import Any
 from typing import List
-
+import string
 
 class OurAwesomeException(Exception):
     pass
@@ -109,7 +109,7 @@ def is_word_in_text(word: str, text: str) -> bool:
         >>> False
 
     """
-    return bool(text.find(word) > -1)
+    return text.find(word) > -1
 
 
 def some_loop_exercise() -> list:
@@ -147,7 +147,6 @@ def alphabet() -> dict:
         alphabet()
         >>> {"a": 1, "b": 2 ...}
     """
-    import string
     values = list(string.ascii_lowercase)
     keys = range(1, 27)
     my_dict = dict(zip(keys, values))
